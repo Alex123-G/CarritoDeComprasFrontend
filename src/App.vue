@@ -1,26 +1,23 @@
 <template>
-	<img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld msg="En el componente Hellowordl existe una propiead la cual tenemos que pasarle un valor y es lo que estamos escribiendo aca" />
+	<h1>Hola mundo desde el Componente App</h1>
+	<CardComponent />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import CardComponent from "./components/CardComponent";
 
 export default {
 	name: "App",
-	components: {
-		HelloWorld,
-	},
+	components: { CardComponent },
 };
 </script>
 
 <style>
+body {
+	padding: 0;
+	margin: 0;
+}
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
+	background-color: red;
 }
 </style>
