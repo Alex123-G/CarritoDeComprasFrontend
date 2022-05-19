@@ -1,3 +1,4 @@
+<!-- El component Aside no se va utilizar debido a que el modelo responsive nos llevara mas tiempo, por ello vamos a obtar a crear un combo box el cual tenga las categorias y un btoon para que nos pueda listar los productos por la categoria -->
 <template>
 	<aside class="aside">
 		Yo soy aside

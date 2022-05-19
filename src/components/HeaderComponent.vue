@@ -5,7 +5,9 @@
 		</div>
 		<div class="perfil">
 			<span class="usuario">Alex Gallozo</span>
-			<button class="logout">Iniciar Sesion</button>
+			<div>
+				<img src="https://cdn.icon-icons.com/icons2/1144/PNG/512/shoppingcart_80945.png" alt="imagen" style="height: 30px" />
+			</div>
 		</div>
 	</header>
 </template>
@@ -28,8 +30,5 @@ export default {};
 	align-items: center;
 	justify-content: space-between;
 	gap: 10px;
-}
-
-.usuario {
 }
 </style>
