@@ -1,18 +1,7 @@
 <template>
-	<!--		<div class="card">
-			<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-img-top" alt="..." />
-			<div class="card-body">
-				<h5 class="card-title">Xiaomi</h5>
-				<p class="card-text">Redmin Buds nombre completo</p>
-				<div class="d-flex justify-content-between align-items-center">
-					<span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button>
-				</div>
-			</div>
-		</div>  -->
-
 	<section class="section">
 		<div class="container-card">
-			<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
+			<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="" />
 			<div class="container-card-body">
 				<h5 class="container-card-brand">Xiaomi</h5>
 				<p class="container-card-name">Redmin Buds nombre completo</p>
@@ -65,6 +54,7 @@
 	background-color: #fff;
 	border-radius: 4px;
 	padding: 15px;
+	margin-bottom: 15px;
 }
 
 .btn-comprar {

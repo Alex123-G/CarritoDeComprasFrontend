@@ -20,11 +20,6 @@ body {
 	padding: 0;
 	margin: 0;
 	background-color: #eee;
-	font-size: 1rem;
-}
-@media (min-width: 576px) {
-	body {
-		/* font-size: 12px; */
-	}
+	font-size: 15px;
 }
 </style>

@@ -1,15 +1,16 @@
 <template>
 	<div class="container-subtitle-form">
-		<h5 class="subtitle">Listar productos por categoría</h5>
+		<h4 class="fw-normal">Filtrar productos por categoría:</h4>
 		<form class="container-select align-items-center">
-			<select name="" id="" class="custom-select-sm">
+			<!-- <select name="" id="" class="custom-select-sm class="selectpicker""> -->
+			<select name="" id="" class="form-select form-select">
 				<option value="">Seleccione una categoria</option>
 				<option value="">Xiaomi</option>
 				<option value="">Lg</option>
 				<option value="">Lenovo</option>
 				<option value="">Samsung</option>
 			</select>
-			<button type="button" class="btn btn-success btn-lg">Listar</button>
+			<button type="button" class="btn btn-success btn-sm">Listar</button>
 		</form>
 	</div>
 </template>
@@ -18,19 +19,19 @@
 
 <style>
 .container-subtitle-form {
-	max-width: 1200px;
-	margin: 45px auto;
-	padding-left: 5px;
+	max-width: 75em;
+	margin: 2.8125em auto;
+	padding-left: 0.3125em;
 }
 .container-select {
 	display: flex;
-	gap: 0.625rem;
+	gap: 0.625em;
 }
-.subtitle {
-	font-size: 1rem;
+.btn {
+	padding-left: 1.25em;
+	padding-right: 1.25em;
+	font-size: 1.25em;
 }
-/* Cambia el responsive desing de 
-@media (min-width: 576px) { ... }
-@media (min-width: 768px) { ... }
+/* Cambia el responsive desing de
 */
 </style>
