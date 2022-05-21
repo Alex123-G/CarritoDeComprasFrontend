@@ -6,7 +6,7 @@
 		<div class="perfil">
 			<span class="usuario">Alex Gallozo</span>
 			<div>
-				<img src="https://cdn.icon-icons.com/icons2/606/PNG/512/shopping-cart-add-button_icon-icons.com_56132.png" alt="imagen" style="height: 30px" />
+				<img v-bind:src="require('../imgs/icons/Untitled.svg')" alt="carrito" style="height: 30px" />
 			</div>
 		</div>
 	</header>

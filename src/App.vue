@@ -2,7 +2,7 @@
 	<HeaderComponent></HeaderComponent>
 	<CategoriasComponent></CategoriasComponent>
 	<section class="section">
-		<CardComponent />
+		<CardComponent v-for="producto of productos" :key="producto.id_producto" :producto="producto" />
 	</section>
 </template>
 
@@ -12,16 +12,19 @@ import { useStore } from "vuex";
 import HeaderComponent from "./components/HeaderComponent";
 import CategoriasComponent from "./components/CategoriasComponent.vue";
 import CardComponent from "./components/CardComponent";
+import { computed } from "@vue/reactivity";
 
 export default {
 	name: "App",
 	components: { HeaderComponent, CardComponent, CategoriasComponent },
 	setup() {
-		const storage = useStore();
+		const store = useStore();
 		onMounted(() => {
 			// Si tubiera un parametro, se le coloca una coma, y despues los valores del parametro
-			storage.dispatch("fetchData");
+			store.dispatch("fetchData");
 		});
+		const productos = computed(() => store.state.productos);
+		return { productos };
 	},
 };
 </script>
