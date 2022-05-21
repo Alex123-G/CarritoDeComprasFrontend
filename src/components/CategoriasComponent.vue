@@ -2,7 +2,6 @@
 	<div class="container-subtitle-form">
 		<h4 class="fw-normal">Filtrar productos por categoría:</h4>
 		<form class="container-select align-items-center">
-			<!-- <select name="" id="" class="custom-select-sm class="selectpicker""> -->
 			<select name="" id="" class="form-select form-select">
 				<option value="">Seleccione una categoria</option>
 				<option value="">Xiaomi</option>
