@@ -1,46 +1,57 @@
 <template>
-	<div class="container mx-auto mt-4">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card" style="width: 18rem">
-					<img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="..." />
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn mr-2"><i class="fas fa-link"></i> Visit Site</a>
-						<a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card" style="width: 18rem">
-					<img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="..." />
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn mr-2"><i class="fas fa-link"></i> Visit Site</a>
-						<a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card" style="width: 18rem">
-					<img src="https://i.imgur.com/ZTkt4I5.jpg" class="card-img-top" alt="..." />
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<a href="#" class="btn mr-2"><i class="fas fa-link"></i> Visit Site</a>
-						<a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-					</div>
-				</div>
-			</div>
+	<div class="container-card">
+		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="" />
+		<div class="container-card-body">
+			<h5 class="container-card-brand">Xiaomi</h5>
+			<p class="container-card-name">Redmin Buds nombre completo</p>
+			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
+		</div>
+	</div>
+	<div class="container-card">
+		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
+		<div class="container-card-body">
+			<h5 class="container-card-brand">Xiaomi</h5>
+			<p class="container-card-name">Redmin Buds nombre completo</p>
+			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
+		</div>
+	</div>
+	<div class="container-card">
+		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
+		<div class="container-card-body">
+			<h5 class="container-card-brand">Xiaomi</h5>
+			<p class="container-card-name">Redmin Buds nombre completo</p>
+			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
+		</div>
+	</div>
+	<div class="container-card">
+		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
+		<div class="container-card-body">
+			<h5 class="container-card-brand">Xiaomi</h5>
+			<p class="container-card-name">Redmin Buds nombre completo</p>
+			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {};
-</script>
+<style>
+.container-card {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.btn-comprar {
+	background-color: #ff5500;
+	border-color: #ff5500;
+	color: white;
+}
+.container-card-price {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+</style>

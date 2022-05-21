@@ -32,6 +32,4 @@
 	padding-right: 1.25em;
 	font-size: 1.25em;
 }
-/* Cambia el responsive desing de
-*/
 </style>
