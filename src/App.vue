@@ -1,6 +1,7 @@
 <template>
 	<HeaderComponent></HeaderComponent>
 	<CategoriasComponent></CategoriasComponent>
+	{{ carro }}
 	<section class="section">
 		<CardComponent v-for="producto of productos" :key="producto.id_producto" :producto="producto" />
 	</section>
@@ -24,7 +25,8 @@ export default {
 			store.dispatch("fetchData");
 		});
 		const productos = computed(() => store.state.productos);
-		return { productos };
+		const carro = computed(() => store.state.carro);
+		return { productos, carro };
 	},
 };
 </script>

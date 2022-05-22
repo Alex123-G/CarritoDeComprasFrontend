@@ -1,43 +1,29 @@
 <template>
-	<!-- <div class="container-card">
-		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="" />
-		<div class="container-card-body">
-			<h5 class="container-card-brand">Xiaomi</h5>
-			<p class="container-card-name">Redmin Buds nombre completo</p>
-			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
-		</div>
-	</div>
-	<div class="container-card">
-		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
-		<div class="container-card-body">
-			<h5 class="container-card-brand">Xiaomi</h5>
-			<p class="container-card-name">Redmin Buds nombre completo</p>
-			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
-		</div>
-	</div>
-	<div class="container-card">
-		<img src="https://i.linio.com/p/56a8af338094379159196fc4ed05abef-product.webp" class="card-image" alt="..." />
-		<div class="container-card-body">
-			<h5 class="container-card-brand">Xiaomi</h5>
-			<p class="container-card-name">Redmin Buds nombre completo</p>
-			<div class="container-card-price"><span class="font-weight-bold">S/ 144.00</span> <button class="btn btn-comprar">Comprar</button></div>
-		</div>
-	</div> -->
 	<div class="container-card">
 		<img :src="producto.url_img" alt="..." />
 		<div class="container-card-body">
 			<h5 class="container-card-brand">{{ producto.nombre_marca }}</h5>
 			<p class="container-card-name">{{ producto.nombre_producto }}</p>
 			<div class="container-card-price">
-				<span class="font-weight-bold">S/ {{ producto.precio_producto }}</span> <button class="btn btn-comprar">Comprar</button>
+				<span class="font-weight-bold">S/ {{ producto.precio_producto }}</span>
+				<button class="btn btn-comprar" @click="agregarProductoAlCarro(producto)">Comprar</button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
 	props: ["producto"],
+	setup() {
+		const store = useStore();
+		const agregarProductoAlCarro = producto => {
+			store.dispatch("agregarProductoCarro", producto);
+		};
+		return { agregarProductoAlCarro };
+	},
 };
 </script>
 <style>
