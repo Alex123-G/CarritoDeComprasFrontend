@@ -5,17 +5,19 @@ export default createStore({
 	state: {
 		productos: [],
 		carro: {},
+		productos_carro: 0,
 	},
 	// Mutacion Solo sirve para modificar los state
 	mutations: {
 		// state hace referencia al objeto state que esta declarado arriba, y el payload es el nuevo valor que vamos a colocarle al state y de esa forma cambia el valor del state
 		setProducto(state, payload) {
 			state.productos = payload;
-			// console.log(state.productos);
 		},
 		// mutacion para agrgar los productos al carro
 		setCarro(state, payload) {
 			state.carro[payload.id_producto] = payload;
+			state.productos_carro++;
+			console.log(state.productos_carro);
 		},
 	},
 	actions: {

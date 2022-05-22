@@ -7,13 +7,23 @@
 			<span class="usuario">Alex Gallozo</span>
 			<div>
 				<img v-bind:src="require('../imgs/icons/Untitled.svg')" alt="carrito" style="height: 30px" />
+				<span>{{ productos_carro }}</span>
 			</div>
 		</div>
 	</header>
 </template>
 
 <script>
-export default {};
+import { computed } from "@vue/reactivity";
+import { useStore } from "vuex";
+
+export default {
+	setup() {
+		const store = useStore();
+		const productos_carro = computed(() => store.state.productos_carro);
+		return { productos_carro };
+	},
+};
 </script>
 
 <style>

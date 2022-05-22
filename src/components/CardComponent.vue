@@ -22,6 +22,7 @@ export default {
 		const agregarProductoAlCarro = producto => {
 			store.dispatch("agregarProductoCarro", producto);
 		};
+		
 		return { agregarProductoAlCarro };
 	},
 };
