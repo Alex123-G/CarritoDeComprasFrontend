@@ -1,7 +1,6 @@
 <template>
 	<HeaderComponent></HeaderComponent>
 	<CategoriasComponent></CategoriasComponent>
-	{{ carro }}
 	<section class="section">
 		<CardComponent v-for="producto of productos" :key="producto.id_producto" :producto="producto" />
 	</section>
@@ -36,14 +35,13 @@ body {
 	padding: 0;
 	margin: 0;
 	background-color: #eee;
-	font-size: 15px;
 }
 .section {
-	max-width: 1200px;
-	margin: 0 auto;
+	max-width: 75em;
+	margin: auto;
 	display: grid;
-	gap: 12px;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 380px));
+	gap: 0.9375em;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 320px));
 	align-content: center;
 	justify-content: center;
 	align-items: center;

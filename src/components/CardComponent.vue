@@ -1,12 +1,12 @@
 <template>
 	<div class="container-card">
-		<img :src="producto.url_img" alt="..." />
+		<img :src="producto.url_img" alt="..." class="image_card" />
 		<div class="container-card-body">
 			<h5 class="container-card-brand">{{ producto.nombre_marca }}</h5>
 			<p class="container-card-name">{{ producto.nombre_producto }}</p>
 			<div class="container-card-price">
 				<span class="font-weight-bold">S/ {{ producto.precio_producto }}</span>
-				<button class="btn btn-comprar" @click="agregarProductoAlCarro(producto)">Comprar</button>
+				<button class="btn btn-sm btn-comprar" @click="agregarProductoAlCarro(producto)">Agregar</button>
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@ export default {
 		const agregarProductoAlCarro = producto => {
 			store.dispatch("agregarProductoCarro", producto);
 		};
-		
+
 		return { agregarProductoAlCarro };
 	},
 };
@@ -34,8 +34,8 @@ export default {
 	flex-wrap: nowrap;
 	background-color: #fff;
 	border-radius: 4px;
-	padding: 15px;
-	margin-bottom: 15px;
+	padding: 0.9375em;
+	margin-bottom: 0.9375em;
 }
 
 .btn-comprar {

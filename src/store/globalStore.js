@@ -17,7 +17,7 @@ export default createStore({
 		setCarro(state, payload) {
 			state.carro[payload.id_producto] = payload;
 			state.productos_carro++;
-			console.log(state.productos_carro);
+			console.log(state.carro);
 		},
 	},
 	actions: {
@@ -32,10 +32,8 @@ export default createStore({
 				console.log(error);
 			}
 		},
-		// Accion para agregar productos al carro de compras
 		agregarProductoCarro({ commit, state }, producto) {
-			// "hasOwnProperty" validacion para saber si existe o no , nos devuelve un valor true o false,(LO QUE ESTA EN LA PAGINA NO SIRVE PORUE SOLO LO PERMITE EJEUCTAR UNA VEZ Y NO AUMENTA LA CANTIDAD) DEBIDO AL ESINT TIENE UN WARNIGN  POR ESO TENEMOS QUE LLAMARL A CALL PARA QUE SE QUITE EL ERROR LINK PAGINA "que est en marcadores"
-
+			// "hasOwnProperty"  es un metodo el cual nos permite saber si el objeto que esta en el primer parametro "state.carro" tiene la propiead del segundo argumento "producto.id_producto" y esto nos devuelve un booleano ,si lo tiene es true sino nos da false. => state.carro.hasOwnProperty(producto.id_producto) esto funciona igual PERO por una regloa del esint NO NOS PERMITE ESCRIBIRLO asi , ya que no es una buena practica
 			Object.prototype.hasOwnProperty.call(state.carro, producto.id_producto)
 				? (producto.cantidad = state.carro[producto.id_producto].cantidad + 1)
 				: (producto.cantidad = 1);
