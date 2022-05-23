@@ -13,7 +13,6 @@
 			</div>
 			<div v-if="productos_carro <= 0 || mostrar_carrito_detalle"></div>
 			<ListaProductosCarro v-else></ListaProductosCarro>
-			<!-- <span v-if="mostrar_carrito_detalle">Hola</span> -->
 		</div>
 	</header>
 </template>
@@ -36,8 +35,6 @@ export default {
 			store.dispatch("cambiarEstadoCarritoDetalle");
 		};
 
-		// cambiarEstadoCarritoDetalle
-
 		return { productos_carro, mostrar_carrito_detalle, cambiarEstadoCarritoDetalle };
 	},
 };
@@ -56,7 +53,6 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 10px;
 }
 
 .carro_container {
@@ -65,14 +61,22 @@ export default {
 .carro_container_imagen {
 	height: 30px;
 	cursor: pointer;
+	padding: 0 10px;
 }
 
 .productos_carro {
 	position: absolute;
 	color: white;
-	bottom: 20px;
-	left: 24px;
-	font-size: 12px;
-	font-weight: bolder;
+	bottom: 21px;
+	left: 33px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+@media (max-width: 576px) {
+	.productos_carro {
+		bottom: 17px;
+		left: 33px;
+	}
 }
 </style>
