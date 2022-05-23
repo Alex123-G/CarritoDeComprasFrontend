@@ -11,7 +11,8 @@
 				<span v-else-if="productos_carro > 9" class="productos_carro">+9</span>
 				<span v-else class="productos_carro">{{ productos_carro }}</span>
 			</div>
-			<ListaProductosCarro></ListaProductosCarro>
+			<div v-if="productos_carro <= 0"></div>
+			<ListaProductosCarro v-else></ListaProductosCarro>
 		</div>
 	</header>
 </template>
