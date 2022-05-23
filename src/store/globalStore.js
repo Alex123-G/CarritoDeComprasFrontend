@@ -6,6 +6,7 @@ export default createStore({
 		productos: [],
 		carro: {},
 		productos_carro: 0,
+		mostrar_carrito_detalle: true,
 	},
 	// Mutacion Solo sirve para modificar los state
 	mutations: {
@@ -17,7 +18,11 @@ export default createStore({
 		setCarro(state, payload) {
 			state.carro[payload.id_producto] = payload;
 			state.productos_carro++;
-			console.log(state.carro);
+			// console.log(state.carro);
+		},
+		setMostrar_carrito_detalle(state) {
+			state.mostrar_carrito_detalle = !state.mostrar_carrito_detalle;
+			console.log(state.mostrar_carrito_detalle);
 		},
 	},
 	actions: {
@@ -38,6 +43,9 @@ export default createStore({
 				? (producto.cantidad = state.carro[producto.id_producto].cantidad + 1)
 				: (producto.cantidad = 1);
 			commit("setCarro", producto);
+		},
+		cambiarEstadoCarritoDetalle({ commit }) {
+			commit("setMostrar_carrito_detalle");
 		},
 	},
 });
