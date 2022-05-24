@@ -1,7 +1,7 @@
 <template>
 	<header class="header">
 		<div class="titulo">
-			<h1>FastBuy</h1>
+			<router-link to="/" class="link"><h1>FastBuy</h1></router-link>
 		</div>
 		<div class="perfil">
 			<span class="usuario">Admin</span>
@@ -49,6 +49,24 @@ export default {
 	color: #eee;
 	grid-area: header;
 }
+
+.link {
+	text-decoration: none;
+	color: #fff;
+}
+
+.link:hover {
+	color: #fff;
+}
+
+.link:link {
+	color: #fff;
+}
+
+.link:active {
+	color: #fff;
+}
+
 .perfil {
 	display: flex;
 	align-items: center;

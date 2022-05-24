@@ -4,7 +4,7 @@ export default createStore({
 	// Los state son propiedades que se pueden utilizar en toda nuestra aplicacion, es como un estado global en React con redux
 	state: {
 		productos: [],
-		carro: {},
+		carro: { void: "void" },
 		productos_carro: 0,
 		mostrar_carrito_detalle: false,
 	},
@@ -18,7 +18,8 @@ export default createStore({
 		setCarro(state, payload) {
 			state.carro[payload.id_producto] = payload;
 			state.productos_carro++;
-			// console.log(state.carro);
+			delete state.carro.void;
+			console.log(state.carro);
 		},
 		setMostrar_carrito_detalle(state) {
 			state.mostrar_carrito_detalle = !state.mostrar_carrito_detalle;

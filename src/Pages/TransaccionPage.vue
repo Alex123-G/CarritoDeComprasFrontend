@@ -1,10 +1,23 @@
 <template>
-	<div>
-		<h1>Esto es la pagina TransaccionPage</h1>
-		<div class="detalle_compra__content">
-			<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle_compra__item">
-				<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
-				<span class="detalle_compra__texto">{{ item_carro.cantidad }}</span>
+	<HeaderComponent></HeaderComponent>
+	<h3 class="text-decoration-underline">Detalle Pedido:</h3>
+	<div class="container">
+		<div v-if="carro.void === 'void'">
+			<h4>Todavía no ha seleccionado ningún producto</h4>
+			<router-link to="/" class="btn btn-success btn-sm">Buscar productos</router-link>
+		</div>
+		<div v-else class="detalle_compra_pedido">
+			<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle_compra_pedido_item">
+				<div class="container_img_nombreProducto">
+					<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
+					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
+				</div>
+				<div class="fw-bolder name_item">
+					<span class="">S/ {{ item_carro.precio_producto * item_carro.cantidad }}</span>
+					<div class="fw-bolder">
+						<span class="">{{ item_carro.cantidad }} uds</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -13,16 +26,63 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
+import HeaderComponent from "@/components/HeaderComponent.vue";
 
 export default {
 	name: "TransaccionPage",
-
 	setup() {
 		const store = useStore();
 		const carro = computed(() => store.state.carro);
 		return { carro };
 	},
+	components: { HeaderComponent },
 };
 </script>
 
-<style></style>
+<style>
+.container {
+	max-width: 1200px;
+	margin: auto;
+	font-size: 0.9em;
+}
+
+.detalle_compra_pedido {
+	display: flex;
+	background-color: #b6b5b7;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.container_img_nombreProducto {
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	max-width: 369px;
+	gap: 8px;
+}
+
+.container_img_nombreProducto span {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.detalle_compra_pedido img {
+	max-width: 80px;
+	object-fit: contain;
+}
+
+.name_item {
+	max-width: 470px;
+}
+.detalle_compra_pedido_item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-around;
+	align-items: center;
+}
+</style>

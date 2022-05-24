@@ -5,20 +5,20 @@
 	<section class="section">
 		<CardComponent v-for="producto of productos" :key="producto.id_producto" :producto="producto" />
 	</section>
-	
 </template>
 
 <script>
 import { onMounted } from "vue";
 import { useStore } from "vuex";
-import HeaderComponent from "../components/HeaderComponent";
+// import HeaderComponent from "../components/HeaderComponent";
 import CategoriasComponent from "../components/CategoriasComponent.vue";
 import CardComponent from "../components/CardComponent";
 import { computed } from "@vue/reactivity";
+import HeaderComponent from "@/components/HeaderComponent.vue";
 
 export default {
 	name: "HomePage",
-	components: { HeaderComponent, CardComponent, CategoriasComponent },
+	components: { CardComponent, CategoriasComponent, HeaderComponent },
 	setup() {
 		const store = useStore();
 		onMounted(() => {
