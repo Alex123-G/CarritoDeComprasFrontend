@@ -1,6 +1,6 @@
 <template>
 	<HeaderComponent></HeaderComponent>
-	<h3 class="text-decoration-underline">Detalle Pedido:</h3>
+	<h3 class="text-decoration-underline sub-titulo">Detalle Pedido:</h3>
 	<div class="container">
 		<div v-if="carro.void === 'void'">
 			<h4>Todavía no ha seleccionado ningún producto</h4>
@@ -13,7 +13,7 @@
 					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
 				</div>
 				<div class="fw-bolder name_item">
-					<span class="">S/ {{ item_carro.precio_producto * item_carro.cantidad }}</span>
+					<span class="">S/{{ item_carro.precio_producto * item_carro.cantidad }}</span>
 					<div class="fw-bolder">
 						<span class="">{{ item_carro.cantidad }} uds</span>
 					</div>
@@ -40,17 +40,23 @@ export default {
 </script>
 
 <style>
-.container {
+.sub-titulo {
 	max-width: 1200px;
 	margin: auto;
-	font-size: 0.9em;
+	margin: 40px auto;
+}
+.container {
+	margin: 40px auto;
+	max-width: 1200px;
+	font-size: 1em;
 }
 
 .detalle_compra_pedido {
 	display: flex;
-	background-color: #b6b5b7;
+	/* background-color: #b6b5b7; */
 	flex-direction: column;
 	flex-wrap: nowrap;
+	gap: 20px;
 }
 
 .container_img_nombreProducto {
@@ -75,7 +81,7 @@ export default {
 }
 
 .name_item {
-	max-width: 470px;
+	/* max-width: 0px; */
 }
 .detalle_compra_pedido_item {
 	display: flex;
@@ -84,5 +90,19 @@ export default {
 	align-content: center;
 	justify-content: space-around;
 	align-items: center;
+	padding: 5px;
+	border-bottom: 1px solid #000;
+}
+@media (max-width: 576px) {
+	.container {
+		font-size: 0.8em;
+	}
+
+	.detalle_compra_pedido {
+		flex-wrap: wrap;
+	}
+	.container_img_nombreProducto {
+		flex-wrap: wrap;
+	}
 }
 </style>
