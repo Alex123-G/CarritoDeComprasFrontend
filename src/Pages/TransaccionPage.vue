@@ -13,30 +13,60 @@
 					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
 				</div>
 				<div class="fw-bolder name_item">
-					<span>S/{{ item_carro.precio_producto * item_carro.cantidad }}</span>
+					<span>S/{{ item_carro.precio_producto * item_carro.cantidad_producto }}</span>
 					<div>
-						<span>{{ item_carro.cantidad }} uds</span>
+						<span>{{ item_carro.cantidad_producto }} uds</span>
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-sm btn-comprar">Comprar</button>
+			<button class="btn btn-sm btn-comprar" @click="realizarTransaccion(carro)">Realizar Compra</button>
 		</div>
 	</div>
 </template>
 
 <script>
+import HeaderComponent from "@/components/HeaderComponent.vue";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import HeaderComponent from "@/components/HeaderComponent.vue";
 
 export default {
 	name: "TransaccionPage",
+	components: { HeaderComponent },
+
 	setup() {
 		const store = useStore();
 		const carro = computed(() => store.state.carro);
-		return { carro };
+
+		const realizarTransaccion = carro => {
+			const productos = [];
+			const objeto_data = { Id_usuario: "1", productos };
+
+			for (const producto in carro) {
+				productos.push(carro[producto]);
+			}
+
+			const crear_Transaccion = async objeto_data => {
+				try {
+					const JsonObjeto_data = JSON.stringify(objeto_data);
+					const res = await fetch("https://localhost:44372/api/v1/pedidos", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+						},
+						body: JsonObjeto_data,
+					});
+					const data_res = await res.json();
+					console.log(data_res);
+				} catch (error) {
+					console.log(error);
+				}
+			};
+
+			crear_Transaccion(objeto_data);
+		};
+		return { carro, realizarTransaccion };
 	},
-	components: { HeaderComponent },
 };
 </script>
 

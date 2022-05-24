@@ -2,7 +2,7 @@
 	<div class="detalle_compra__content">
 		<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle_compra__item">
 			<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
-			<span class="detalle_compra__texto">{{ item_carro.cantidad }}</span>
+			<span class="detalle_compra__texto">{{ item_carro.cantidad_producto }}</span>
 		</div>
 
 		<router-link to="/transaccion" class="btn btn-success btn-sm">Pagar</router-link>
