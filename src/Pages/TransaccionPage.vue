@@ -1,6 +1,6 @@
 <template>
 	<HeaderComponent></HeaderComponent>
-	<h3 class="text-decoration-underline sub-titulo">Detalle Pedido:</h3>
+	<h3 class="text-decoration-underline sub-titulo text-center">Detalle Pedido:</h3>
 	<div class="container">
 		<div v-if="carro.void === 'void'">
 			<h4>Todavía no ha seleccionado ningún producto</h4>
@@ -13,12 +13,13 @@
 					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
 				</div>
 				<div class="fw-bolder name_item">
-					<span class="">S/{{ item_carro.precio_producto * item_carro.cantidad }}</span>
-					<div class="fw-bolder">
-						<span class="">{{ item_carro.cantidad }} uds</span>
+					<span>S/{{ item_carro.precio_producto * item_carro.cantidad }}</span>
+					<div>
+						<span>{{ item_carro.cantidad }} uds</span>
 					</div>
 				</div>
 			</div>
+			<button class="btn btn-sm btn-comprar">Comprar</button>
 		</div>
 	</div>
 </template>
@@ -46,22 +47,22 @@ export default {
 	margin: 40px auto;
 }
 .container {
-	margin: 40px auto;
-	max-width: 1200px;
 	font-size: 1em;
 }
 
 .detalle_compra_pedido {
+	max-width: 800px;
+	margin: auto;
 	display: flex;
 	/* background-color: #b6b5b7; */
 	flex-direction: column;
 	flex-wrap: nowrap;
-	gap: 20px;
+	gap: 25px;
 }
 
 .container_img_nombreProducto {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-content: center;
 	justify-content: center;
 	align-items: center;
@@ -86,7 +87,7 @@ export default {
 .detalle_compra_pedido_item {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-content: center;
 	justify-content: space-around;
 	align-items: center;

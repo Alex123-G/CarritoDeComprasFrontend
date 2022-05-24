@@ -4,7 +4,7 @@
 			<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
 			<span class="detalle_compra__texto">{{ item_carro.cantidad }}</span>
 		</div>
-		
+
 		<router-link to="/transaccion" class="btn btn-success btn-sm">Pagar</router-link>
 	</div>
 </template>
@@ -58,7 +58,7 @@ export default {
 	}
 
 	.detalle_compra__item img {
-		max-width: 90px;
+		max-width: 60px;
 	}
 }
 </style>
