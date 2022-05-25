@@ -1,4 +1,3 @@
-<!-- EN ESTE APP VA SER UN COMPONENTE GENERAL, ES DECIR QUE VA APARECER EN TODAS LAS PAGINAS, POR ENDE HAY QUE CAMBIAR LA RUTA CREAMOS U NUEVO ARCHIVO HOME Y LE COLOCAMOS TODOS ESTOS DATOS QUE ESTAN ABAJO -->
 <template>
 	<HeaderComponent></HeaderComponent>
 	<CategoriasComponent></CategoriasComponent>
@@ -8,21 +7,19 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { onMounted } from "vue";
 import { useStore } from "vuex";
-// import HeaderComponent from "../components/HeaderComponent";
 import CategoriasComponent from "../components/CategoriasComponent.vue";
 import CardComponent from "../components/CardComponent";
-import { computed } from "@vue/reactivity";
-import HeaderComponent from "@/components/HeaderComponent.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
 
 export default {
 	name: "HomePage",
-	components: { CardComponent, CategoriasComponent, HeaderComponent },
+	components: { HeaderComponent, CategoriasComponent, CardComponent },
 	setup() {
 		const store = useStore();
 		onMounted(() => {
-			// Si tubiera un parametro, se le coloca una coma, y despues los valores del parametro
 			store.dispatch("fetchData");
 		});
 		const productos = computed(() => store.state.productos);
@@ -43,7 +40,7 @@ body {
 	margin: auto;
 	display: grid;
 	gap: 0.9375em;
-	grid-template-columns: repeat(auto-fill, minmax(180px, 320px));
+	grid-template-columns: repeat(auto-fill, minmax(11.25em, 20em));
 	align-content: center;
 	justify-content: center;
 	align-items: center;

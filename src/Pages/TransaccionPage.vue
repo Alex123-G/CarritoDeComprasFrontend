@@ -1,18 +1,18 @@
 <template>
 	<HeaderComponent></HeaderComponent>
-	<h3 class="text-decoration-underline sub-titulo text-center">Detalle Pedido:</h3>
+	<h3 class="text-decoration-underline text-center sub-titulo">Detalle del Pedido:</h3>
 	<div class="container">
 		<div v-if="carro.void === 'void'">
 			<h4>Todavía no ha seleccionado ningún producto</h4>
 			<router-link to="/" class="btn btn-success btn-sm">Buscar productos</router-link>
 		</div>
-		<div v-else class="detalle_compra_pedido">
-			<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle_compra_pedido_item">
-				<div class="container_img_nombreProducto">
+		<div v-else class="detalle-compra-pedido">
+			<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle-compra-pedido-item">
+				<div class="container-img-nombreProducto">
 					<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
 					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
 				</div>
-				<div class="fw-bolder name_item">
+				<div class="fw-bolder">
 					<span>S/{{ item_carro.precio_producto * item_carro.cantidad_producto }}</span>
 					<div>
 						<span>{{ item_carro.cantidad_producto }} uds</span>
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import HeaderComponent from "@/components/HeaderComponent.vue";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-
+import HeaderComponent from "../components/HeaderComponent.vue";
+import { crear_Transaccion } from "../servicios/TransaccionPage";
 export default {
 	name: "TransaccionPage",
 	components: { HeaderComponent },
@@ -39,31 +39,10 @@ export default {
 
 		const realizarTransaccion = carro => {
 			const productos = [];
-			const objeto_data = { Id_usuario: "1", productos };
-
 			for (const producto in carro) {
 				productos.push(carro[producto]);
 			}
-
-			const crear_Transaccion = async objeto_data => {
-				try {
-					const JsonObjeto_data = JSON.stringify(objeto_data);
-					const res = await fetch("https://localhost:44372/api/v1/pedidos", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-							Accept: "application/json",
-						},
-						body: JsonObjeto_data,
-					});
-					const data_res = await res.json();
-					console.log(data_res);
-				} catch (error) {
-					console.log(error);
-				}
-			};
-
-			crear_Transaccion(objeto_data);
+			crear_Transaccion(productos);
 		};
 		return { carro, realizarTransaccion };
 	},
@@ -72,56 +51,52 @@ export default {
 
 <style>
 .sub-titulo {
-	max-width: 1200px;
+	max-width: 75em;
 	margin: auto;
-	margin: 40px auto;
+	margin: 2.5em auto;
 }
 .container {
 	font-size: 1em;
 }
 
-.detalle_compra_pedido {
-	max-width: 800px;
+.detalle-compra-pedido {
+	max-width: 50em;
 	margin: auto;
 	display: flex;
-	/* background-color: #b6b5b7; */
 	flex-direction: column;
 	flex-wrap: nowrap;
-	gap: 25px;
+	gap: 1.5625em;
 }
 
-.container_img_nombreProducto {
+.container-img-nombreProducto {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
 	justify-content: center;
 	align-items: center;
-	max-width: 369px;
-	gap: 8px;
+	max-width: 23.125em;
+	gap: 0.5em;
 }
 
-.container_img_nombreProducto span {
+.container-img-nombreProducto span {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-.detalle_compra_pedido img {
-	max-width: 80px;
+.detalle-compra-pedido img {
+	max-width: 5em;
 	object-fit: contain;
 }
 
-.name_item {
-	/* max-width: 0px; */
-}
-.detalle_compra_pedido_item {
+.detalle-compra-pedido-item {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-content: center;
 	justify-content: space-around;
 	align-items: center;
-	padding: 5px;
+	padding: 0.3125em;
 	border-bottom: 1px solid #000;
 }
 @media (max-width: 576px) {
@@ -129,10 +104,10 @@ export default {
 		font-size: 0.8em;
 	}
 
-	.detalle_compra_pedido {
+	.detalle-compra-pedido {
 		flex-wrap: wrap;
 	}
-	.container_img_nombreProducto {
+	.container-img-nombreProducto {
 		flex-wrap: wrap;
 	}
 }

@@ -1,9 +1,9 @@
 import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import store from "./store/globalStore";
 import App from "./App.vue";
 import TransaccionPage from "./Pages/TransaccionPage.vue";
 import HomePage from "./Pages/HomePage.vue";
-import store from "./store/globalStore";
-import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
 	{

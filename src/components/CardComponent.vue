@@ -1,6 +1,6 @@
 <template>
 	<div class="container-card">
-		<img :src="producto.url_img" alt="..." class="image_card" />
+		<img :src="producto.url_img" alt="..." class="container-card-img" />
 		<div class="container-card-body">
 			<h5 class="container-card-brand">{{ producto.nombre_marca }}</h5>
 			<p class="container-card-name">{{ producto.nombre_producto }}</p>
@@ -36,6 +36,9 @@ export default {
 	border-radius: 4px;
 	padding: 0.9375em;
 	margin-bottom: 0.9375em;
+}
+.container-card-img {
+	padding: 20px;
 }
 
 .btn-comprar {
