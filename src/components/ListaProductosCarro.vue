@@ -2,7 +2,10 @@
 	<div class="detalle-compra-content">
 		<div v-for="item_carro in carro" :key="item_carro.id_producto" class="detalle-compra-item">
 			<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
-			<span class="detalle-compra-texto">{{ item_carro.cantidad_producto }}</span>
+			<div>
+				<span class="detalle-compra-texto">{{ item_carro.cantidad_producto }}</span>
+				<img v-bind:src="require('../imgs/icons/delete.svg')" alt="carrito" class="carro-container-imagen" @click="eliminarProducto(item_carro)" />
+			</div>
 		</div>
 		<router-link to="/transaccion" class="btn btn-success btn-sm">Pagar</router-link>
 	</div>
@@ -16,7 +19,12 @@ export default {
 	setup() {
 		const store = useStore();
 		const carro = computed(() => store.state.carro);
-		return { carro };
+
+		const eliminarProducto = a => {
+			// Ahora que ya tenemos el id del producto lo que tenemos que haces es otro metodo en el global storage para que en vez de aumentar en +1 se disminuya en 1 y si es igual a 0 lo que haremos es eliminar ese objeto de la lista, y el nombre de la propieda del objeto es igual al id que estamos enviandole.
+			console.log(a.id_producto);
+		};
+		return { carro, eliminarProducto };
 	},
 };
 </script>
