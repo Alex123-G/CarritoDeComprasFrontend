@@ -22,6 +22,15 @@ export default createStore({
 			state.carro[payload.id_producto] = payload;
 			state.productos_carro++;
 			delete state.carro.void;
+			console.log(state.carro);
+		},
+		setCantidadProductosCarro(state, payload) {
+			if (state.carro[payload.id_producto].cantidad_producto > 1) {
+				state.carro[payload.id_producto].cantidad_producto = state.carro[payload.id_producto].cantidad_producto - 1;
+			} else {
+				delete state.carro[payload.id_producto];
+			}
+			state.productos_carro--;
 		},
 		setMostrar_carrito_detalle(state) {
 			state.mostrar_carrito_detalle = !state.mostrar_carrito_detalle;
@@ -57,8 +66,17 @@ export default createStore({
 				: (producto.cantidad_producto = 1);
 			commit("setCarro", producto);
 		},
+
+		cambiarProductoCarro({ commit }, producto) {
+			commit("setCantidadProductosCarro", producto);
+		},
 		cambiarEstadoCarritoDetalle({ commit }) {
 			commit("setMostrar_carrito_detalle");
+		},
+	},
+	getters: {
+		precio_total(state) {
+			return Object.values(state.carro).reduce((acc, item) => acc + item.cantidad_producto * item.precio_producto, 0);
 		},
 	},
 });

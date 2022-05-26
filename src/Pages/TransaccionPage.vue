@@ -19,6 +19,9 @@
 					</div>
 				</div>
 			</div>
+			<h3 class="text-center">
+				Precio Total S/ <span> {{ precio_total }}</span>
+			</h3>
 			<button class="btn btn-sm btn-comprar" @click="realizarTransaccion(carro)">Realizar Compra</button>
 		</div>
 	</div>
@@ -36,6 +39,7 @@ export default {
 	setup() {
 		const store = useStore();
 		const carro = computed(() => store.state.carro);
+		const precio_total = computed(() => store.getters.precio_total);
 
 		const realizarTransaccion = carro => {
 			const productos = [];
@@ -44,7 +48,8 @@ export default {
 			}
 			crear_Transaccion(productos);
 		};
-		return { carro, realizarTransaccion };
+
+		return { carro, realizarTransaccion, precio_total };
 	},
 };
 </script>
