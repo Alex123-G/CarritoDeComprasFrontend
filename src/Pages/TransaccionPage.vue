@@ -28,7 +28,7 @@
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 import HeaderComponent from "../components/HeaderComponent.vue";
-import { crear_Transaccion } from "../servicios/TransaccionPage";
+import { crear_Transaccion } from "../servicios/TransaccionPageService";
 export default {
 	name: "TransaccionPage",
 	components: { HeaderComponent },

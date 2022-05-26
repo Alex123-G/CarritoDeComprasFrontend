@@ -5,11 +5,18 @@ export default createStore({
 		productos: [],
 		carro: { void: "void" },
 		productos_carro: 0,
+		marcas: [],
 		mostrar_carrito_detalle: false,
 	},
 	mutations: {
 		setProducto(state, payload) {
 			state.productos = payload;
+		},
+		setProducto2(state, payload) {
+			state.productos = payload;
+		},
+		setMarca(state, payload) {
+			state.marcas = payload;
 		},
 		setCarro(state, payload) {
 			state.carro[payload.id_producto] = payload;
@@ -21,11 +28,24 @@ export default createStore({
 		},
 	},
 	actions: {
-		async fetchData({ commit }) {
+		async getProductos({ commit }) {
 			try {
 				const res = await fetch("https://localhost:44372/api/v1/productos");
 				const data = await res.json();
 				commit("setProducto", data);
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async getProductosById({ commit }, productos_por_marca) {
+			const nuevo_arreglo = await productos_por_marca;
+			commit("setProducto2", nuevo_arreglo);
+		},
+		async getMarcas({ commit }) {
+			try {
+				const res = await fetch("https://localhost:44372/api/v1/marcas");
+				const data = await res.json();
+				commit("setMarca", data);
 			} catch (error) {
 				console.log(error);
 			}

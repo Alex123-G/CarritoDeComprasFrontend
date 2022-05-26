@@ -20,7 +20,7 @@ export default {
 	setup() {
 		const store = useStore();
 		onMounted(() => {
-			store.dispatch("fetchData");
+			store.dispatch("getProductos");
 		});
 		const productos = computed(() => store.state.productos);
 		const carro = computed(() => store.state.carro);
