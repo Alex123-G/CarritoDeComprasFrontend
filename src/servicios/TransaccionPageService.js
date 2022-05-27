@@ -10,7 +10,7 @@ export const crear_Transaccion = async productos => {
 			body: JsonProductos,
 		});
 		const response = await request.json();
-		console.log(response);
+		return response;
 	} catch (error) {
 		console.log(error);
 	}

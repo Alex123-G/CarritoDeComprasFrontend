@@ -10,7 +10,6 @@ export const listarProdsById = async id_marca => {
 			body: form_data,
 		});
 		const response = await request.json();
-		// console.log(response);
 		return response;
 	} catch (error) {
 		console.log(error);

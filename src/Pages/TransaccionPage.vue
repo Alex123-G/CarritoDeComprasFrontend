@@ -12,7 +12,7 @@
 					<img :src="item_carro.url_img" :alt="item_carro.nombre_producto" :title="item_carro.nombre_producto" />
 					<span :title="item_carro.nombre_producto">{{ item_carro.nombre_producto }}</span>
 				</div>
-				<div class="fw-bolder">
+				<div class="fw-bold">
 					<span>S/{{ item_carro.precio_producto * item_carro.cantidad_producto }}</span>
 					<div>
 						<span>{{ item_carro.cantidad_producto }} uds</span>
@@ -22,16 +22,24 @@
 			<h3 class="text-center">
 				Precio Total S/ <span> {{ precio_total }}</span>
 			</h3>
-			<button class="btn btn-sm btn-comprar" @click="realizarTransaccion(carro)">Realizar Compra</button>
+			<button class="btn btn-sm btn-comprar" @click="let a = realizarTransaccion(carro);">Realizar Compra</button>
+			<div v-if="respuesta_transaccion.estado_transaccion === false" class="alert alert-danger">
+				<p>Sucedió un error comuníquese con un adminstrador</p>
+			</div>
+			<p v-else-if="respuesta_transaccion.estado_transaccion === true" class="alert alert-success">
+				Transaccion Exitosa. Su código de pedido es <span>{{ respuesta_transaccion.Codigo_pedido }}</span>
+			</p>
 		</div>
 	</div>
 </template>
 
 <script>
+import { ref } from "vue";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import { crear_Transaccion } from "../servicios/TransaccionPageService";
+
 export default {
 	name: "TransaccionPage",
 	components: { HeaderComponent },
@@ -40,16 +48,18 @@ export default {
 		const store = useStore();
 		const carro = computed(() => store.state.carro);
 		const precio_total = computed(() => store.getters.precio_total);
+		const respuesta_transaccion = ref({ estado_transaccion: null, Codigo_pedido: null });
+		const productos = [];
 
-		const realizarTransaccion = carro => {
-			const productos = [];
+		const realizarTransaccion = async carro => {
 			for (const producto in carro) {
 				productos.push(carro[producto]);
 			}
-			crear_Transaccion(productos);
+			const respuesta = await crear_Transaccion(productos);
+			respuesta_transaccion.value = respuesta;
 		};
 
-		return { carro, realizarTransaccion, precio_total };
+		return { carro, realizarTransaccion, precio_total, respuesta_transaccion };
 	},
 };
 </script>

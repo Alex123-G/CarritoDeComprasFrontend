@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
 import { onMounted } from "vue";
+import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 import CategoriasComponent from "../components/CategoriasComponent.vue";
 import CardComponent from "../components/CardComponent";
@@ -19,11 +19,12 @@ export default {
 	components: { HeaderComponent, CategoriasComponent, CardComponent },
 	setup() {
 		const store = useStore();
+		const productos = computed(() => store.state.productos);
+		const carro = computed(() => store.state.carro);
+
 		onMounted(() => {
 			store.dispatch("getProductos");
 		});
-		const productos = computed(() => store.state.productos);
-		const carro = computed(() => store.state.carro);
 		return { productos, carro };
 	},
 };
